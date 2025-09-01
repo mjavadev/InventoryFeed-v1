@@ -54,11 +54,11 @@ public class InventoryController {
 		totalFilesCount = fileProcessedCount.get(0);
 		successfulFilesProcessedCount = fileProcessedCount.get(1);
 		
-		if (totalFilesCount == successfulFilesProcessedCount) {
+		if (totalFilesCount == successfulFilesProcessedCount && totalFilesCount>0) {
 			logger.info(MessageConstants.ALL_FILE_PROCESSED_SUCCESSFULLY, successfulFilesProcessedCount);
 			return new Response<>(true,MessageConstants.ALL_FILE_PROCESSED_SUCCESSFULLY);
 		}
-		else if (totalFilesCount > successfulFilesProcessedCount) {
+		else if (totalFilesCount > successfulFilesProcessedCount && successfulFilesProcessedCount>0) {
 			logger.info(MessageConstants.FILE_PROCESSED_SUCCESSFULLY,successfulFilesProcessedCount);
 			logger.warn(MessageConstants.ERROR_FILE_PROCESSED,totalFilesCount-successfulFilesProcessedCount);
 			return new Response<>(true, String.format(MessageConstants.FILE_PARTIAL_PROCESSED_SUCCESSFULLY_AND_PARTIAL_FAILED,successfulFilesProcessedCount,totalFilesCount-successfulFilesProcessedCount));

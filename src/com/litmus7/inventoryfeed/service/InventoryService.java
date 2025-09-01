@@ -97,9 +97,9 @@ public class InventoryService {
 			
 		}
 		
-		if (totalNumberOfFilesToProcess==successfulFilesProcessed) 
+		if (totalNumberOfFilesToProcess==successfulFilesProcessed && totalNumberOfFilesToProcess>0) 
 			logger.info("Inventory creation successful for all {} file(s)", successfulFilesProcessed);
-		else if (totalNumberOfFilesToProcess>successfulFilesProcessed) {
+		else if (totalNumberOfFilesToProcess>successfulFilesProcessed && successfulFilesProcessed>0) {
 			logger.info("Inventory creation success for {} files",successfulFilesProcessed);
 			logger.warn("Inventory creation failed for {} file(s)",totalNumberOfFilesToProcess-successfulFilesProcessed);;
 		}
